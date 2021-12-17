@@ -9,13 +9,13 @@ class Links(commands.Cog):
     
     @commands.command()
     async def play(self, ctx):
-        embed = Embed(title="MomentRanks Play | NBA Top Shot Fantasy Competition", url=os.getenv("MOMENTRANKS_PLAY_LINK"), description="Compete with your friends with your NBA Top Shot moments. Set a lineup, watch your players, and win rewards!")
+        embed = Embed(title="MomentRanks Play | NBA Top Shot Fantasy Competition", color=14167442, url=os.getenv("MOMENTRANKS_PLAY_LINK"), description="Compete with your friends with your NBA Top Shot moments. Set a lineup, watch your players, and win rewards!")
         embed.set_image(url="https://play.momentranks.com/img/PLAY09_horizontal.png")
         await ctx.send(embed=embed)
 
     @commands.command(aliases = ["cal"])
     async def calendar(self, ctx):
-        embed = Embed(title="Shot Talkin Event Calendar", url=os.getenv("SPREADSHEET_LINK"))
+        embed = Embed(title="Shot Talkin Event Calendar", url=os.getenv("SPREADSHEET_LINK"), color=14167442)
         embed.set_author(name="MomentRanks")
         await ctx.send(embed=embed)
 
