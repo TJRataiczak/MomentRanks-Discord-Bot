@@ -8,7 +8,7 @@ class Funny(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(alias=["cage"])
+    @commands.command(aliases = ["cage"])
     async def nick(self, ctx):
         random_image = f"{os.getenv('NICK_CAGE_DIR')}/{random.choice(os.listdir('images/nickcage'))}"
         file = File(random_image, filename="nickfunny.jpg")
