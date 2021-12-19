@@ -12,7 +12,7 @@ class Funny(commands.Cog):
     async def nick(self, ctx):
         random_image = f"{os.getenv('NICK_CAGE_DIR')}/{random.choice(os.listdir('images/nickcage'))}"
         file = File(random_image, filename="nickfunny.jpg")
-        embed = Embed(title="Test Picture")
+        embed = Embed(title=random.choice(["Not the Bees!!!", "It's Cage Time!"]), color=14167442)
         embed.set_image(url="attachment://nickfunny.jpg")
         await ctx.send(file=file, embed=embed)
 
