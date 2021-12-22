@@ -32,18 +32,23 @@ class Nba(commands.Cog):
             #Search database for all games of the team given in the command
             team_to_search = " ".join(arg).title()
             for day_of_week in week:
-                c.execute(f"SELECT * FROM games WHERE (home = '{team_to_search}' OR away = '{team_to_search}') AND date = '{day_of_week}'")
+                c.execute(f"SELECT * FROM games WHERE ((home_name = '{team_to_search}' OR away_name = '{team_to_search}') OR (home_city = '{team_to_search}' OR away_city = '{team_to_search}')) AND date = '{day_of_week}'")
                 for item in c.fetchall():
                     games.append(item)
             
             #Add games to the embed
-            for game in games:
-                game_full_date = game[2].split("-")
-                date_of_game = datetime.date(int(game_full_date[0]), int(game_full_date[1]), int(game_full_date[2]))
-                embed.add_field(name=f"{game[0]} vs {game[1]}", value=f"{date_of_game.strftime('%A')} @ {game[3]}")
-
-            embed.title = f"NBA Schedule for {today.strftime('%B %d')} - {week[-1].strftime('%B %d')}"
-
+            if games != []:
+                for game in games:
+                    game_full_date = game[4].split("-")
+                    date_of_game = datetime.date(int(game_full_date[0]), int(game_full_date[1]), int(game_full_date[2]))
+                    embed.add_field(name=f"{game[0]} vs {game[2]}", value=f"{date_of_game.strftime('%A')} @ {game[5]}")
+                embed.title = f"NBA Schedule for {today.strftime('%B %d')} - {week[-1].strftime('%B %d')}"
+                embed.url = "https://www.nba.com/schedule"
+            
+            else:
+                embed.title = "Something Went Wrong"
+                embed.description = "I can't seem to find that team. Make sure you spelled it correctly and try again!"
+       
         else:
             #Search database for every game on the current day
             c.execute(f"SELECT * FROM games WHERE date = '{today}'")
@@ -52,11 +57,11 @@ class Nba(commands.Cog):
             
             #Add games to the embed
             for game in games:
-                embed.add_field(name=f"{game[0]} vs {game[1]}", value=f"{game[3]}")
+                embed.add_field(name=f"{game[0]} vs {game[2]}", value=f"{game[5]}")
             
             embed.title = f"NBA Schedule for {today.strftime('%B %d')}"
+            embed.url = "https://www.nba.com/schedule"
 
-        embed.url = "https://www.nba.com/schedule"
         await ctx.send(embed=embed)
 
         conn.close()
