@@ -17,9 +17,7 @@ class Links(commands.Cog):
 
     @commands.command(aliases = ["cal"])
     async def calendar(self, ctx):
-        logo_image = "images\logos\shottalkin' logo.jpg"
-        file = File(logo_image, filename="shottalkinlogo.jpg")
-
+        
         embed = Embed(title="Top Shot Event Calendar", url=os.getenv("SPREADSHEET_LINK"), color=14167442)
         embed.set_author(name="Shot Talkin'",url= "https://twitter.com/ShotTalkin/", icon_url=os.getenv("SHOT_TALKIN_LOGO"))
         await ctx.send(embed=embed)
