@@ -10,7 +10,7 @@ class Nba(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(help = "Shows games for the day, nba (team/city) Shows games for the next week for that team")
     async def nba(self, ctx, *arg):
         
         #Setup today's date and week
