@@ -20,7 +20,7 @@ class CustomHelpCommand(commands.HelpCommand):
                 command_names = [command.name for command in mapping[cog]]
                 command_helps = [command.help for command in mapping[cog]]
                 for command_name, command_help in zip(command_names, command_helps):
-                    embed.add_field(name=command_name, value=command_help)
+                    embed.add_field(name=command_name, value=command_help, inline=False)
 
         await self.get_destination().send(embed=embed)
 
