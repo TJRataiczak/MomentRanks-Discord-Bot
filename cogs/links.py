@@ -1,5 +1,5 @@
 from nextcord.ext import commands
-from nextcord import Embed, File
+from nextcord import Embed
 from dotenv import load_dotenv
 import os
 
@@ -19,6 +19,16 @@ class Links(commands.Cog):
     async def cal(self, ctx):
         
         embed = Embed(title="Top Shot Event Calendar", url=os.getenv("SPREADSHEET_LINK"), color=14167442)
+        embed.set_author(name="Shot Talkin'",url= "https://twitter.com/ShotTalkin/", icon_url=os.getenv("SHOT_TALKIN_LOGO"))
+        await ctx.send(embed=embed)
+
+    @commands.command(help = "Link to NBA Stats Leaderboard")
+    async def stats(self, ctx):
+        embed = Embed(title="NBA Daily Stats Leaders",
+                    url="http://www.espn.com/nba/dailyleaders/_/sort/freeThrowsAttempted",
+                    description="Check out the NBA Daily Stats leaders. ESPN ranks your favorite NBA players by points, rebounds, minutes, and more!",
+                    color=14167442)
+        
         embed.set_author(name="Shot Talkin'",url= "https://twitter.com/ShotTalkin/", icon_url=os.getenv("SHOT_TALKIN_LOGO"))
         await ctx.send(embed=embed)
 

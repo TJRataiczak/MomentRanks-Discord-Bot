@@ -1,8 +1,12 @@
 import requests
 import sqlite3
 import datetime
+from dotenv import load_dotenv
+import os
 
-conn = sqlite3.connect('nba.db')
+load_dotenv()
+
+conn = sqlite3.connect(os.getenv("NBA_DB"))
 c = conn.cursor()
 
 nbastats = requests.get('https://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2021/league/00_full_schedule.json')
