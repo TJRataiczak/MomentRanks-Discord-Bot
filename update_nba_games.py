@@ -1,5 +1,6 @@
 import requests
 import sqlite3
+import datetime
 
 conn = sqlite3.connect('nba.db')
 c = conn.cursor()
@@ -17,3 +18,6 @@ for months in data['lscd']:
 
 conn.commit()
 conn.close()
+
+with open("last_update.txt", "w") as f:
+    f.write(str(datetime.datetime.today()))
