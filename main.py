@@ -34,7 +34,6 @@ class CustomHelpCommand(commands.HelpCommand):
         return await super().send_command_help(command)
 
 
-
 client = commands.Bot(command_prefix=os.getenv("DISCORD_PREFIX"), help_command=CustomHelpCommand())
 
 @client.event
