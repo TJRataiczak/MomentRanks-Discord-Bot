@@ -21,7 +21,7 @@ class Funny(commands.Cog):
     async def milk(self, ctx):
         random_image = f"{os.getenv('MILK_GANG_DIR')}/{random.choice(os.listdir('images/milkgang'))}"
         file = File(random_image, filename= "milk.gif" if random_image.endswith(".gif") else "milk.jpg")
-        embed = Embed(title="Milk Gang :dolphin:", color=14167442)
+        embed = Embed(title="Milk Gang <:milk_glasses:902626848859648030>", color=14167442)
         embed.set_author(name="Shot Talkin'",url= "https://twitter.com/ShotTalkin/", icon_url=os.getenv("SHOT_TALKIN_LOGO"))
         embed.set_image(url="attachment://milk.gif" if random_image.endswith("gif") else "attachment://milk.jpg")
         await ctx.send(file=file, embed=embed)
