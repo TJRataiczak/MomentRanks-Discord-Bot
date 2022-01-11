@@ -84,6 +84,20 @@ class Nba(commands.Cog):
 
         conn.close()
 
+    
+    @commands.command()
+    async def test(self, ctx):
+        embed = Embed(color=14167442)
+        embed.set_author(name="Shot Talkin'",url= "https://twitter.com/ShotTalkin/", icon_url=os.getenv("SHOT_TALKIN_LOGO"))
+        embed.title = "Top 5 Scorers"
+        embed.add_field(name='Lebron James', value="3s: 3\nBlocks: 0\nAssists: 1\nSteals: 0\nRebounds: 9")
+        embed.add_field(name='Trey Murphey', value="3s: 3\nBlocks: 3\nAssists: 7\nSteals: 0\nRebounds: 10")
+        embed.add_field(name='Austin Rivers', value="3s: 1\nBlocks: 5\nAssists: 3\nSteals: 0\nRebounds: 5")
+        embed.add_field(name='Rudy Gobert', value="3s: 5\nBlocks: 0\nAssists: 4\nSteals: 0\nRebounds: 9")
+        embed.add_field(name='Karl Towns', value="3s: 2\nBlocks: 1\nAssists: 10\nSteals: 0\nRebounds: 4")
+
+        await ctx.send(embed=embed)
+
 def setup(bot):
     bot.add_cog(Nba(bot))
     load_dotenv()
