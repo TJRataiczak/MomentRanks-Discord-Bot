@@ -1,8 +1,0 @@
-home_name
-home_city
-home_score
-away_name
-away_city
-away_score
-date
-time
